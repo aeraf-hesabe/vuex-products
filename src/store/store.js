@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
+
     state: {
         products: [
             {id: '1', name: 'macbook air', price: 2000},
@@ -11,6 +12,7 @@ export const store = new Vuex.Store({
             {id: '3', name: 'iphone', price: 1000}
           ]
     },
+
     getters: {
         saleProducts: state => {
             var saleProducts = state.products.map( product => {
@@ -20,6 +22,14 @@ export const store = new Vuex.Store({
                 }
               })
             return saleProducts;
+        }
+    },
+
+    mutations: {
+        reducePrice: state => {
+            state.products.forEach(product =>{
+                product.price -= 1;
+            })
         }
     }
 
